@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risk Prediction Form</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Enter Patient Data</h2>
+    
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="error">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/prediction/" method="POST">
+        <!-- Numerical input validation -->
+        <label for="LVOT gradient">LVOT gradient (mmHg):</label>
+        <input type="number" step="0.1" id="LVOT gradient" name="LVOT gradient" required><br><br>
+
+        <label for="IVSd z-score">IVsd z-score:</label>
+        <input type="number" step="0.1" id="IVSd z-score" name="IVSd z-score" required><br><br>
+
+        <label for="Age at first echo">Age at first echo (years):</label>
+        <input type="number" step="0.1" id="Age at first echo" name="Age at first echo" required><br><br>
+
+        <label for="LVPWd z-score">LVPWd z-score:</label>
+        <input type="number" step="0.1" id="LVPWd z-score" name="LVPWd z-score" required><br><br>
+
+        <input type="submit" value="Predict HCM phenotype conversion risk">
+    </form>
+</body>
+</html>
