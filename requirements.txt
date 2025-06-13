@@ -1,4 +1,3 @@
-aext-assistant==4.20.0
 aext-assistant-server==4.20.0
 aext-core==4.20.0
 aext-core-server==4.20.0
